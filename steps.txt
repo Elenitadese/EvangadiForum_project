@@ -1,0 +1,59 @@
+# Evangadi Forum Project – Development and Git Workflow Documentation
+
+This document records the **step-by-step history** of how the Evangadi Forum project was created, including folder setup, repository creation, project initialization, and Git commands used. This is ideal for tutorials and personal tracking.
+
+---
+
+## Step 1: Create Project Folder and Repository
+
+1. Create a folder for the project on local machine:
+
+```bash
+mkdir Git-worked-forum
+cd Git-worked-forum
+```
+
+2. Create a GitHub repository named `EvangadiForum_project`.
+
+3. Clone the repository to the local folder:
+
+```bash
+git clone https://github.com/Elenitadese/EvangadiForum_project.git
+cd EvangadiForum_project
+```
+
+> Note: Since the repository is empty initially, you may see a warning: "You appear to have cloned an empty repository."
+
+---
+
+## Step 2: Initialize Project and Setup package.json
+
+1. Initialize Node.js project:
+
+```bash
+npm init
+```
+
+* Follow prompts to set up project details.
+
+2. Example `package.json` created:
+
+```json
+{
+  "name": "evangadiforum_project",
+  "version": "1.0.0",
+  "description": "Evangadi forum project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eleni",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
+```
+Create a file named `server.js` for backend setup:
+//  i push with a commit message of Initial commit: project setup with package.json and server.js
