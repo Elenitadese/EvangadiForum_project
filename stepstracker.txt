@@ -1,33 +1,60 @@
+then i come to creating daytyabase  and go to my mamy and php admin page i create database as below 
+username - Evangadi-Forum
+password - (kAvVyYjkdqhLFjs
+hostname- local host
+check Create database with same name and grant all privileges. and click go and create my db with user  Database: evangadi-forum
+. then i come to connect to my server
 
-
-///////////////////////////////////////////////////
 User@DESKTOP-7IIRD14 MINGW64 /c/Evangadi/Git-worked-forum/EvangadiForum_project (main)
-$ npm i express cors
+$ npm i mysql2
 
-added 70 packages in 41s
+added 12 packages in 18s
 
-16 packages are looking for funding
+18 packages are looking for funding
   run `npm fund` for details
 
 User@DESKTOP-7IIRD14 MINGW64 /c/Evangadi/Git-worked-forum/EvangadiForum_project (main)
 $
 
-and add code to server.js to liten port const express = require("express");
+const mysql2 = require('mysql2');
+
+update my env  as below r
+PORT=3000
+PASSWORD=(kAvVyYjkdqhLFjs
+DATABASE=evangadi-forum
+HOST=localhost
+USER=Evangadi-Forum
+
+but i create new   folder named server in my root folder EvangadiForum_project inside server folder it  i create subfolders 
+api and config folders  then in config i create database.js file i come the database all info to database.js const mysql2 = require("mysql2");
+
+const dbconnect = mysql2.createPool({
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
+  connectionLimit: 10,
+});
+dbconnect.getConnection(function (err, connection) {
+  console.log("database connected");
+});
+
+//module.exports = dbconnect.promise();
+require('dotenv').config()
+const express = require("express");
 const cors = require("cors");
 
+const dbconnect = require("./server/config/database");
+
 const app = express();
-const port = 3000; // You can change the port number if needed
+const port = process.env.PORT; // You can change the port number if needed
 
 app.use(cors); // Enable CORS for all origins
 app.use(express.json({ extended: true })); // Parse JSON bodies
 
+
+
+
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
-
-and also i create gitinore file to include my steps discription formats and i run the result and see 
-User@DESKTOP-7IIRD14 MINGW64 /c/Evangadi/Git-worked-forum/EvangadiForum_project (main)
-$ node --watch server.js
-Listening at http://localhost:3000
-
-....docmnet this steps and write me commit message also

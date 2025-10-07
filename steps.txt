@@ -57,3 +57,143 @@ npm init
 ```
 Create a file named `server.js` for backend setup:
 //  i push with a commit message of Initial commit: project setup with package.json and server.js
+Step 3: Install Dependencies
+
+Install Express and CORS:
+
+npm i express cors
+
+Output indicates packages installed and funding info.
+
+Install dotenv for environment variable support:
+
+npm i dotenv
+
+Output indicates package installed.
+
+Commit message suggestion:
+
+Install dependencies: express, cors, and dotenv
+Step 4: Create Server File and Configure Environment
+
+Create server.js with basic server setup and environment support:
+
+const express = require("express");
+require('dotenv').config();
+const cors = require("cors");
+
+
+const app = express();
+const port = process.env.PORT || 3000; // Default to 3000 if PORT not set
+
+
+app.use(cors()); // Enable CORS for all origins
+app.use(express.json({ extended: true })); // Parse JSON bodies
+
+
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
+});
+
+Create .env file to store environment variables:
+
+PORT=3000
+
+Create .gitignore file to exclude unnecessary files from Git:
+
+node_modules/
+.env
+.steps.txt
+.stepstracker.txt
+
+Run the server to verify:
+
+node --watch server.js
+
+Output:
+
+Listening at http://localhost:3000
+
+Commit message suggestion:
+
+Setup server.js with Express, dotenv, and CORS; add .env and .gitignore
+Step 5: Stage and Commit Files to Git
+
+Stage all files:
+
+git add .
+
+Commit changes:
+
+git commit -m "Setup server.js with Express, dotenv, and CORS; add .env and .gitignore"
+
+Push to GitHub:
+
+
+tep 4: Setup MySQL Database Connection
+
+Create database in phpMyAdmin:
+
+Username: Evangadi-Forum
+
+Password: (kAvVyYjkdqhLFjs
+
+Hostname: localhost
+
+Database: evangadi-forum
+
+Grant all privileges to the user.
+
+Install MySQL package:
+
+npm i mysql2
+
+Update .env with database credentials:
+PORT=3000
+USER=Evangadi-Forum
+PASSWORD=(kAvVyYjkdqhLFjs
+DATABASE=evangadi-forum
+HOST=localhost
+Create folder structure:
+server/
+├─ api/
+└─ config/
+└─ database.js
+
+Configure database.js:
+const mysql2 = require("mysql2");
+
+
+const dbconnect = mysql2.createPool({
+host: process.env.HOST,
+user: process.env.USER,
+password: process.env.PASSWORD,
+database: process.env.DATABASE,
+connectionLimit: 10,
+});
+
+
+dbconnect.getConnection(function (err, connection) {
+console.log("Database connected");
+});
+
+
+module.exports = dbconnect;
+Update server.js to connect to database:
+require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const dbconnect = require("./server/config/database");
+
+
+const app = express();
+const port = process.env.PORT;
+
+
+app.use(cors());
+app.use(express.json({ extended: true }));
+
+
+app.listen(port, () => {
+console.log(`Listening at http://localhost:${port}`);
+});
